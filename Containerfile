@@ -20,16 +20,6 @@ RUN apt-get update &&\
 # Install R Packages
 RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','rgdal','dplyr','sf','sp','flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
-#RUN R -e "install.packages(c('leaflet','rgdal'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
-#RUN R -e "install.packages(c('dplyr','sf','sp'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
-#RUN R -e "install.packages(c('rgdal'), repos='http://R-Forge.R-project.org', Ncpus = parallel::detectCores())"
-
-#RUN R -e "install.packages(c('dplyr','sf','sp'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
-#RUN R -e "install.packages(c('flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
 # Install shiny-server deb package
 RUN SHINYVER=`curl https://download3.rstudio.org/ubuntu-18.04/x86_64/VERSION` && \
     wget --no-verbose "https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-$SHINYVER-amd64.deb" && \
