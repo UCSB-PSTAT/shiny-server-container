@@ -1,5 +1,5 @@
 # shiny-server-container
-Creates a Containerized instance of R's Shiny Server. This image is available on dockerhub. 
+Creates a Containerized instance of R's Shiny Server. This image is [available on dockerhub](https://hub.docker.com/r/ucsb/shiny-server). 
 
 ## Using This Image
 You can start this image with podman like so: 
