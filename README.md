@@ -8,7 +8,7 @@ podman run -d --name=shiny-server --rm -p 3838:3838 ucsb/shiny-server:latest
 ```
 You can test that the container is running by visiting http:/localhost:3838
 
-You can change the shiny-server settings by using a configmap, or replacing `/etc/shiny-server/shiny-server.conf`
+You can change the [shiny-server settings](https://docs.rstudio.com/shiny-server/#default-configuration) by volume mounting it to `/etc/shiny-server/shiny-server.conf` on `podman run`.  If running in Kubernetes, this can be provided mounted via ConfigMap.
 
 The shiny sample apps are installed by default, but you can override them by mapping in your own local directory. 
 This is using all of the default locations, so you need to map your shiny project into the it's own folder or override the `/srv/shiny-server/` directory completely. An example of how you might do that would be: 
