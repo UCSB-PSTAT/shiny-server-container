@@ -29,7 +29,8 @@ RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','r
 # Housekeeping
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     mkdir -p /var/log/shiny-server && \
-    chown shiny:shiny /var/lib/shiny-server
+    chown shiny:shiny /var/lib/shiny-server &&
+    sed -i 's/listen 3838/listen 3838 0.0.0.0/g' /etc/shiny-server/shiny-server.conf
 
 EXPOSE 3838
 
