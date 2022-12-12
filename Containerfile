@@ -17,9 +17,6 @@ RUN apt-get update &&\
     libudunits2-dev  && \
     apt-get clean
 
-# Install R Packages
-RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','rgdal','dplyr','sf','sp','flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
 # Install shiny-server deb package
 RUN SHINYVER=`curl https://download3.rstudio.org/ubuntu-18.04/x86_64/VERSION` && \
     wget --no-verbose "https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-$SHINYVER-amd64.deb" && \
@@ -28,6 +25,9 @@ RUN SHINYVER=`curl https://download3.rstudio.org/ubuntu-18.04/x86_64/VERSION` &&
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     mkdir -p /var/log/shiny-server && \
     chown shiny:shiny /var/lib/shiny-server
+
+# Install R Packages
+RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','rgdal','dplyr','sf','sp','flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 EXPOSE 3838
 
