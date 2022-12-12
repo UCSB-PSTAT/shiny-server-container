@@ -25,7 +25,7 @@ pipeline {
                                 steps {
                                     sh 'podman run -it --rm localhost/$IMAGE_NAME Rscript -e "library(shiny); library(shinythemes); library(maps); library(mapproj); library(leaflet); library(rgdal); library(dplyr); library(sf); library(sp); library(flexdashboard); library(plotly); library(stringr)"'
                                     sh 'podman run -d --name=$IMAGE_NAME --rm -p 3838:3838 localhost/$IMAGE_NAME'
-                                    sh 'sleep 10 && curl -v http://localhost:3838/ 2>&1 | grep -P "HTTP\\S+\\s200\\s+[A-Z ]+"'
+                                    sh 'sleep 10 && curl -v http://localhost:3838/ 2>&1 | grep "Welcome to Shiny Server"'
                                 }
                                 post {
                                     always {
