@@ -27,7 +27,8 @@ RUN SHINYVER=`curl https://download3.rstudio.org/ubuntu-18.04/x86_64/VERSION` &&
     rm -f "shiny-server-$SHINYVER-amd64.deb" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     mkdir -p /var/log/shiny-server && \
-    chown shiny:shiny /var/lib/shiny-server
+    chown shiny:shiny /var/lib/shiny-server && \
+    sed -i 's/listen 3838/listen 3838 0.0.0.0/g' /etc/shiny-server/shiny-server.conf
 
 EXPOSE 3838
 
