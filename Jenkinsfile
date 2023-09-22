@@ -18,7 +18,8 @@ pipeline {
                         stages{
                             stage('Build') {
                                 steps {
-                                    sh 'podman build -t localhost/$IMAGE_NAME --pull --force-rm --no-cache $([ "scipy-base" == "$IMAGE_NAME" ] && echo "--from=jupyter/scipy-notebook:notebook-6.4.10")  .'
+                                    echo "NODE_NAME = ${env.NODE_NAME}"
+                                    sh 'podman build -t localhost/$IMAGE_NAME --pull --force-rm --no-cache $([ "scipy-base" == "$IMAGE_NAME" ] && echo "--from=jupyter/scipy-notebook:notebook-7.0.3")  .'
                                  }
                             }
                             stage('Test') {
