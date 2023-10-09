@@ -18,6 +18,11 @@ pipeline {
                         stages{
                             stage('Build') {
                                 steps {
+                                    script {
+                                        if (currentBuild.getBuildCauses('com.cloudbees.jenkins.GitHubPushCause').size() || currentBuild.getBuildCauses('jenkins.branch.BranchIndexingCause').size()) {
+                                           scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
+                                        }
+                                    }
                                     echo "NODE_NAME = ${env.NODE_NAME}"
                                     sh 'podman build -t localhost/$IMAGE_NAME --pull --force-rm --no-cache $([ "scipy-base" == "$IMAGE_NAME" ] && echo "--from=jupyter/scipy-notebook:notebook-7.0.3")  .'
                                  }
