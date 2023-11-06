@@ -18,7 +18,7 @@ RUN apt-get update &&\
     apt-get clean
 
 # Install R Packages
-RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','rgdal','dplyr','sf','sp','flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+RUN R -e "install.packages(c('shiny','shinythemes','maps','mapproj','leaflet','dplyr','sf','sp','flexdashboard','plotly','stringr','knitr'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 # Install shiny-server deb package
 RUN SHINYVER=`curl https://download3.rstudio.org/ubuntu-18.04/x86_64/VERSION` && \
