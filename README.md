@@ -1,5 +1,5 @@
 # shiny-server-container
-Creates a Containerized instance of RStudio's opensource [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/). 
+This image has been archived. Creates a Containerized instance of RStudio's opensource [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/). 
 This image is [available on dockerhub](https://hub.docker.com/r/ucsb/shiny-server). 
 
 ## Using This Image
